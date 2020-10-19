@@ -1,7 +1,7 @@
 # Pesa SDK for Nodejs
 
 
-The **Pesa SDK for Node.js** makes it easy for developers to access [OpenAPI](https://openapiportal.m-pesa.com/) in their Javascript code, and build robust applications and software using services like Customber 2 Bussiness, Query etc.
+The **Pesa SDK for Node.js** makes it easy for developers to access [OpenAPI](https://openapiportal.m-pesa.com/) in their Javascript code, and build robust applications and software using services like Customer 2 Bussiness, Query, etc.
 
 ## Documentation
 
@@ -9,15 +9,14 @@ Take a look at the [API docs here](https://pesa-js.netlify.app/).
 
 ## Getting Started
 
-1. **Sign up for OpenAPI Portal** – Before you begin, you need to
-   sign up for an account and retrieve your credentials.
+1. **Sign up for OpenAPI Portal** – Before you begin, you need to sign up for an account and retrieve your credentials.
 
 1. **Minimum requirements** – To run the SDK, your system will need to meet the
    [minimum requirements](https://pesa-js.netlify.app/docs/requirements.html), including having **Node >= 10.1**.
    
 1. **Install the SDK** – Using [NPM](#) is the recommended way to install the
    Pesa SDK for JS. The SDK is available via [NPM] under the
-   [`openpesa/pesa-js`](#) package. If Composer is installed globally on your system, you can run the following in the base directory of your project to add the SDK as a dependency:
+   [`openpesa/pesa-js`](#) package. If the Composer is installed globally on your system, you can run the following in the base directory of your project to add the SDK as a dependency:
    ```sh
    npm install openpesa/pesa-js
    ```
@@ -37,23 +36,24 @@ Take a look at the [API docs here](https://pesa-js.netlify.app/).
 ```js
 import Forodha from 'openpesa/pesa-js'
 
+// Popolate the credtials
+const api_key =  'your_api_key'
+const public_key =  'the_public_key'
+
 // Intiate with credentials
-$forodha = new Forodha([
-    'api_key' => 'YOUR_API_KEY', 
-    'public_key' => 'PUBLIC_KEY', 
-]);
+let forodha = new Forodha({ api_key, public_key });
 
 // Setup the transaction 
-$data = [
-    'input_Amount' => '10000',
+let data = {
+    'input_Amount' : 10000,
     // ..
-];
+};
 
-// Execute 
-$result = $forodha->transact('c2b', $data);
+// Execute the transaction
+let result = forodha.transact('c2b', data);
 
 // Print results
-console.log($result);
+console.log(result);
 
 ```
 
@@ -66,13 +66,13 @@ npm test
 
 ## Opening Issues
 
-If you have a feature requrest or you encounter a bug, please file an issue on [our issue tracker on GitHub](https://github.com/openpesa/js-pesa/issues).
+If you have a feature request or you encounter a bug, please file an issue on [our issue tracker on GitHub](https://github.com/openpesa/js-pesa/issues).
 
 
 
 ### Security
 
-If you discover any security related issues, please email [alphaolomi@gmail.com](mailto:alphaolomi@gmail.com) instead of using the issue tracker.
+If you discover any security-related issues, please email [alphaolomi@gmail.com](mailto:alphaolomi@gmail.com) instead of using the issue tracker.
 
 ## Credits
 

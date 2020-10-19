@@ -1,5 +1,5 @@
 {
-  "name": "pesa-js",
+  "name": "@openpesa/pesa-js",
   "description": "Pesa SDK for Nodejs",
   "license": "MIT",
   "version": "0.0.1",
