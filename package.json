@@ -1,24 +1,32 @@
 {
-  "name": "openpesa",
-  "version": "0.0.1",
-  "description": "Pesa SDK",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/openpesa/js-pesa.git"
-  },
-  "keywords": [
-    "sdk",
-    "sdk",
-    "openpesa"
-  ],
-  "author": "Openpesa",
+  "name": "pesa-js",
+  "description": "Pesa SDK for Nodejs",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/openpesa/js-pesa/issues"
+  "version": "0.0.1",
+  "author": "Openpesa ",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "keywords": [
+    "openpesa",
+    "openapi"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json"
   },
-  "homepage": "https://github.com/openpesa/js-pesa#readme"
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "codecov": "^3.8.0",
+    "jest": "^26.5.3",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.0.3"
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
