@@ -28,5 +28,9 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "dependencies": {
+    "axios": "^0.20.0",
+    "jsencrypt": "^3.0.0-rc.1"
+  }
 }
