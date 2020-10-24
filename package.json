@@ -31,6 +31,6 @@
   ],
   "dependencies": {
     "axios": "^0.20.0",
-    "jsencrypt": "^3.0.0-rc.1"
+    "node-rsa": "^1.1.1"
   }
 }
