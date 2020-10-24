@@ -1,3 +1,7 @@
 language: node_js
 node_js:
-  - 14
+    - 14
+scripts:
+    - npm install codecov jest -g
+after_success:
+    - jest --ci --coverage && codecov
