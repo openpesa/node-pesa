@@ -1,5 +1,7 @@
 # Pesa SDK for Nodejs
 
+[![Build Status](https://travis-ci.org/openpesa/pesa-js.svg)](https://travis-ci.org/openpesa/pesa-js)
+
 The **Pesa SDK for Node.js** makes it easy for developers to access [OpenAPI](https://openapiportal.m-pesa.com/) in their Javascript code, and build robust applications and software using services like Customer 2 Bussiness, Query, etc.
 
 ## Documentation
