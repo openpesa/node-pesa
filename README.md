@@ -1,4 +1,6 @@
-# Pesa SDK for Nodejs
+![M-Pesa Logo](img/mpesa.png)
+
+# Pesa SDK for Nodejs using M-Pesa Open API
 
 ![npm (scoped)](https://img.shields.io/npm/v/@openpesa/pesa-js)
 [![Build Status](https://travis-ci.org/openpesa/pesa-js.svg)](https://travis-ci.org/openpesa/pesa-js)
