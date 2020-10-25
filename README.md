@@ -1,4 +1,4 @@
-![M-Pesa Logo](img/mpesa.png)
+<p align="center"><img src="img/mpesa.png" width="400px" alt="M-Pesa Logo"></p>
 
 # Pesa SDK for Nodejs using M-Pesa Open API
 
