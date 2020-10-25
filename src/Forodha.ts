@@ -1,30 +1,8 @@
 import axios, { AxiosInstance } from 'axios';
 // @ts-ignore
 import * as RSA from 'node-rsa';
-
-// todo: move interfaces to another file
-interface IForodhaOptions {
-    auth_url?: string;
-    api_key: string;
-    public_key: string;
-    client_options?: string[];
-}
-
-interface ITransactionData {
-    encryptSessionKey: boolean;
-    name: string;
-    rules: any;
-    url: string;
-}
-
-interface ITransactionType {
-    b2c: ITransactionData;
-    c2b: ITransactionData;
-    rt: ITransactionData;
-    ddc: ITransactionData;
-    ddp: ITransactionData;
-    query: ITransactionData;
-}
+import { IForodhaOptions } from './shared/interfaces/IForodhaOptions.interface';
+import { ITransactionType } from './shared/interfaces/ITransactionType.interface';
 
 /**
  * Forodha
