@@ -1,5 +1,4 @@
-import * as PesaSDK from '../index';
-import { Forodha } from '../Forodha';
+import * as PesaSDK from '../modules/index';
 import { Fixture } from '../__mocks__/Fixture';
 
 test('forodha_instantiable', () => {

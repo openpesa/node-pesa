@@ -1,6 +1,6 @@
 export interface ITransactionData {
     encryptSessionKey: boolean;
     name: string;
-    rules: any;
+    rules: unknown;
     url: string;
 }

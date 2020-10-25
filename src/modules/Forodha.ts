@@ -1,14 +1,14 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import axios, { AxiosInstance } from 'axios';
-// @ts-ignore
 import * as RSA from 'node-rsa';
-import { IForodhaOptions } from './shared/interfaces/IForodhaOptions.interface';
-import { ITransactionType } from './shared/interfaces/ITransactionType.interface';
+import { IForodhaOptions } from '../shared/interfaces/IForodhaOptions.interface';
+import { ITransactionType } from '../shared/interfaces/ITransactionType.interface';
 
 /**
  * Forodha
  */
 export class Forodha {
-    protected BASE_DOMAIN: string = 'https://openapi.m-pesa.com/sandbox/';
+    protected BASE_DOMAIN = 'https://openapi.m-pesa.com/sandbox/';
 
     protected AUTH_URL: string = this.BASE_DOMAIN + 'ipg/v2/vodacomTZN/getSession';
 
@@ -74,7 +74,6 @@ export class Forodha {
      */
     public async get_session() {
         const token = this.encrypt_key(this.options.api_key);
-
         // fixme: must always return a string ,must never return void
         const res = await this.client.get(this.AUTH_URL, { headers: { Authorization: `Bearer ${token}` } });
         return res.data;
@@ -92,7 +91,8 @@ export class Forodha {
     public encrypt_key(key: string): string {
         this.rsa.importKey(this.options.public_key, 'public');
 
-        return this.rsa.encrypt(key, 'base64', 'utf8');
+        //encryption only requires base64 and not utf8
+        return this.rsa.encrypt(key, 'base64');
     }
 
     /**
@@ -103,7 +103,7 @@ export class Forodha {
      * @return mixed
      * @throws GuzzleException
      */
-    public async query(data: {}, session?: string) {
+    public async query(session?: string) {
         const token: string = session ?? (await this.get_session());
         return this.client.get(this.TRANSACT_TYPE.query.url, {
             headers: { Authorization: `Bearer ${this.encrypt_key(token)}` },
@@ -119,14 +119,14 @@ export class Forodha {
      * @return mixed
      * @throws GuzzleException
      */
-    public async transact(type: string, data: {}, session?: string) {
+    public async transact(type: string, data: unknown, session?: string) {
         // fixme: make a promise
         const sessionID: string = session ?? (await this.get_session());
         const token: string | void = this.TRANSACT_TYPE[type as keyof ITransactionType].encryptSessionKey
             ? this.encrypt_key(sessionID)
             : sessionID;
 
-        return this.client.post(this.TRANSACT_TYPE[type as keyof ITransactionType].url, data, {
+        return await this.client.post(this.TRANSACT_TYPE[type as keyof ITransactionType].url, data, {
             headers: { Authorization: `Bearer ${token}"` },
         });
     }
