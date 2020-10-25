@@ -1,4 +1,4 @@
-import { ITransactionData } from "./ITransactionData.interface";
+import { ITransactionData } from './ITransactionData.interface';
 
 export interface ITransactionType {
     b2c: ITransactionData;
