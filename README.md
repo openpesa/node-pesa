@@ -36,14 +36,14 @@ Take a look at the [API docs here](https://pesa-js.netlify.app/).
 ### Quick Examples
 
 ```js
-import { Forodha } from '@openpesa/pesa-js';
+import { Pesa } from '@openpesa/pesa-js';
 
 // Popolate the credtials
 const api_key = 'your_api_key';
 const public_key = 'the_public_key';
 
 // Intiate with credentials
-let forodha = new Forodha({ api_key, public_key });
+let Pesa = new Pesa({ api_key, public_key });
 
 // Setup the transaction
 let data = {
@@ -52,7 +52,7 @@ let data = {
 };
 
 // Execute the transaction
-let result = forodha.transact('c2b', data);
+let result = Pesa.transact('c2b', data);
 
 result
     .then((data) => {

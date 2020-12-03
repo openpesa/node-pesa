@@ -1,5 +1,5 @@
 export declare class Fixture {
-    static username: string;
+    static enviroment: string;
     static apiKey: string;
     static publicKey: string;
     static authUrl: string;
