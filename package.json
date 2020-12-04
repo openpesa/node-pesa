@@ -2,7 +2,7 @@
     "name": "@openpesa/pesa-js",
     "description": "MPesa SDK for Nodejs",
     "license": "MIT",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "Openpesa ",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
