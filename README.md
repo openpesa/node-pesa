@@ -43,7 +43,7 @@ const api_key = 'your_api_key';
 const public_key = 'the_public_key';
 
 // Intiate with credentials
-let Pesa = new Pesa({ api_key, public_key });
+let pesa = new Pesa({ api_key, public_key });
 
 // Setup the transaction
 let data = {
@@ -52,9 +52,7 @@ let data = {
 };
 
 // Execute the transaction
-let result = Pesa.transact('c2b', data);
-
-result
+pesa.c2b(data)
     .then((data) => {
         // Print results
         console.log(data);
@@ -80,7 +78,7 @@ If you discover any security-related issues, please email [alphaolomi@gmail.com]
 
 ## Credits
 
--   [Alpha Olomi](https://github.com/openpesa)
+-   [Openpesa](https://github.com/openpesa)
 -   [All Contributors](../../contributors)
 
 ## License
