@@ -12,8 +12,8 @@ interface c2b {
     input_Amount: number;
     input_Country: 'TZN';
     input_Currency: 'TZS';
-    input_CustomerMSISDN: number;
-    input_ServiceProviderCode: number;
+    input_CustomerMSISDN: number | string;
+    input_ServiceProviderCode: number | string;
     input_ThirdPartyConversationID: string;
     input_TransactionReference: string;
     input_PurchasedItemsDesc: string;
@@ -22,15 +22,15 @@ interface reversal {
     input_ReversalAmount: string;
     input_TransactionID: string;
     input_Country: 'TZN';
-    input_ServiceProviderCode: number;
+    input_ServiceProviderCode: number | string;
     input_ThirdPartyConversationID: string;
 }
 interface b2c {
     input_Amount: number;
     input_Country: 'TZN';
     input_Currency: 'TZS';
-    input_CustomerMSISDN: number;
-    input_ServiceProviderCode: number;
+    input_CustomerMSISDN: number | string;
+    input_ServiceProviderCode: number | string;
     input_ThirdPartyConversationID: string;
     input_TransactionReference: string;
     input_PurchasedItemsDesc: string;
@@ -47,19 +47,19 @@ interface b2b {
 }
 interface query {
     input_QueryReference: string;
-    input_ServiceProviderCode: number;
+    input_ServiceProviderCode: number | string;
     input_ThirdPartyConversationID: string;
     input_Country: 'TZN';
 }
 interface ddc {
     input_AgreedTC: number;
     input_Country: 'TZN';
-    input_CustomerMSISDN: number;
+    input_CustomerMSISDN: number | string;
     input_EndRangeOfDays: number;
     input_ExpiryDate: number;
     input_FirstPaymentDate: number;
     input_Frequency: number;
-    input_ServiceProviderCode: number;
+    input_ServiceProviderCode: number | string;
     input_StartRangeOfDays: number;
     input_ThirdPartyConversationID: string;
     input_ThirdPartyReference: string;
@@ -68,8 +68,8 @@ interface ddp {
     input_Amount: number;
     input_Country: 'TNZ';
     input_Currency: 'TZS';
-    input_CustomerMSISDN: number;
-    input_ServiceProviderCode: number;
+    input_CustomerMSISDN: number | string;
+    input_ServiceProviderCode: number | string;
     input_ThirdPartyConversationID: string;
     input_ThirdPartyReference: string;
 }
@@ -171,6 +171,8 @@ export class Pesa {
                         method: 'post',
                         url: this.baseURL + this.TRANSACTION_ROUTES.query,
                         headers: {
+                            Accept: 'application/json',
+                            Origin: '*',
                             Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
                         },
                         data: {
@@ -210,6 +212,8 @@ export class Pesa {
                         method: 'post',
                         url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
                         headers: {
+                            Accept: 'application/json',
+                            Origin: '*',
                             Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
                         },
                         data: {
@@ -256,6 +260,8 @@ export class Pesa {
                         method: 'post',
                         url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
                         headers: {
+                            Accept: 'application/json',
+                            Origin: '*',
                             Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
                         },
                         data: {
@@ -302,6 +308,8 @@ export class Pesa {
                         method: 'post',
                         url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
                         headers: {
+                            Accept: 'application/json',
+                            Origin: '*',
                             Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
                         },
                         data: {
@@ -345,6 +353,8 @@ export class Pesa {
                         method: 'post',
                         url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
                         headers: {
+                            Accept: 'application/json',
+                            Origin: '*',
                             Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
                         },
                         data: {
@@ -390,6 +400,8 @@ export class Pesa {
                         method: 'post',
                         url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
                         headers: {
+                            Accept: 'application/json',
+                            Origin: '*',
                             Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
                         },
                         data: {
@@ -440,6 +452,8 @@ export class Pesa {
                         method: 'post',
                         url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
                         headers: {
+                            Accept: 'application/json',
+                            Origin: '*',
                             Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
                         },
                         data: {
