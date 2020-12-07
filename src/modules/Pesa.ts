@@ -398,7 +398,7 @@ export class Pesa {
                 .then(({ output_SessionID }: Res) => {
                     axios({
                         method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+                        url: this.baseURL + this.TRANSACTION_ROUTES.ddc,
                         headers: {
                             Accept: 'application/json',
                             Origin: '*',
@@ -450,7 +450,7 @@ export class Pesa {
                 .then(({ output_SessionID }: Res) => {
                     axios({
                         method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+                        url: this.baseURL + this.TRANSACTION_ROUTES.ddp,
                         headers: {
                             Accept: 'application/json',
                             Origin: '*',
