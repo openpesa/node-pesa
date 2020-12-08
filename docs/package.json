@@ -1,0 +1,18 @@
+{
+  "name": "nodejs-pesa-docs",
+  "version": "0.0.1",
+  "description": "Mpesa SDK for Nodejs",
+  "authors": {
+    "name": "Alpha Olomi",
+    "email": "alphaolomi@gmail.com"
+  },
+  "repository": "https://github.com/openpesa/pesa-js",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
