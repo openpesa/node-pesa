@@ -10,14 +10,13 @@ When building apps on the sandbox application, Using the sandbox API which allow
 
 At the bottom left corner of the screen there’s a little phone icon, click it and enter your phone number. This will be the test number you’ll be using and is the number we will send the airtime to. Ensure that you’ve edited the phone number variable we wrote earlier to the phone number you’re using on the simulator.
 
-we will import the required libraries which have already been preinstalled.
+We will import the required libraries which have already been preinstalled.
 
 Here’s the code that does this:
 
 
 ```js
 const { Pesa } = require '@openpesa/pesa-js';
-
 ```
 
 The above code imports the MPesa SDK for us.
@@ -145,4 +144,5 @@ pesa.c2b(data)
         console.log(er.data);
     });
 ```
+
 Happy Coding!! 😀

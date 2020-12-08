@@ -1,12 +1,17 @@
-# Welcome to Mpesa SDK for Nodejs
+# Pesa SDK for Nodejs
 
-Mpesa SDK is a Software Development Kit - a toolkit - for people who build apps using Javascript. Its goal is to enable you to integrate OpenAPI much faster than you could if you were writing code from scratch, by providing a rich set of functions for commonly needed tasks, as well as a simple interface and logical structure to access these libraries. Pesa SDK lets you creatively focus on your project by minimizing the amount of code needed for a given task.
 
-Where possible, MPesa SDK has been kept as flexible as possible, allowing you to work in the way you want, not being forced into working any certain way. The library can have core parts easily extended or completely replaced to make the system work the way you need it to. In short, Mpesa SDK is the malleable framework that tries to provide the tools you need while staying out of the way.
+## What is Pesa SDK
+Pesa SDK is a [Software Development Kit](https://en.wikipedia.org/wiki/Software_development_kit) - a toolkit - for people who build apps using Javascript. 
 
-## Who is Mpesa SDK For?
 
-Mpesa SDK is right for you if:
+## Goal
+To enable you to integrate OpenAPI much faster than you could if you were writing code from scratch, by providing a rich set of functions for commonly needed tasks, as well as a simple interface and logical structure to access these libraries. Pesa SDK lets you creatively focus on your project by minimizing the amount of code needed for a given task.
+
+
+## Who is Pesa SDK For?
+
+Pesa SDK is right for you if:
 
 - You want to integrate  OpenAPI with a small footprint.
 - You want a library that requires nearly zero configuration.
@@ -14,4 +19,7 @@ Mpesa SDK is right for you if:
 - You are not interested in large-scale monolithic libraries like PEAR.
 - You eschew complexity, favoring simple solutions.
 - You need clear, thorough documentation.
+
+
+Where possible, Pesa SDK has been kept as flexible as possible, allowing you to work in the way you want, not being forced into working any certain way. The library can have core parts easily extended or completely replaced to make the system work the way you need it to. In short, Pesa SDK is the malleable framework that tries to provide the tools you need while staying out of the way.
 

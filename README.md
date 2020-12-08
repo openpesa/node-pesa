@@ -20,7 +20,7 @@ Take a look at the [API docs here](https://pesa-js.netlify.app/).
    [minimum requirements](https://pesa-js.netlify.app/docs/requirements.html), including having **Node >= 10.1**.
 1. **Install the SDK** – Using [NPM](#) is the recommended way to install the
    Pesa SDK for JS. The SDK is available via [NPM] under the
-   [`openpesa/pesa-js`](#) package. If the Composer is installed globally on your system, you can run the following in the base directory of your project to add the SDK as a dependency:
+   [`openpesa/pesa-js`](#) package. You can run the following in the base directory of your project to add the SDK as a dependency:
     ```sh
     npm install openpesa/pesa-js
     ```
@@ -71,6 +71,16 @@ npm test
 ## Opening Issues
 
 If you have a feature request or you encounter a bug, please file an issue on [our issue tracker on GitHub](https://github.com/openpesa/js-pesa/issues).
+
+## Road Map 
+
+1. Validate data input using Regex before API call.
+2. If fields are not provided then generate random string for "input_ThirdPartyConversationID" and "input_TransactionReference"
+3. Allow optional input for not required fields in request.
+
+
+
+
 
 ### Security
 

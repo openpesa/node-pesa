@@ -1,8 +1,8 @@
-# MPesa Nodejs SDK User Guide
+# Pesa Nodejs SDK User Guide
 
 -   Welcome to MPesa Nodejs SDK
 
-    -   Server Requirements
+    -   System Requirements
     -   Credits
     -   Contribution Guide
 
