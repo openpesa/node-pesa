@@ -78,14 +78,20 @@ export declare class Pesa {
     private TRANSACTION_ROUTES;
     private baseURL;
     private options;
+    /**
+     * @constructor
+     * @param {IPesaOptions} options
+     * @param environment
+     *
+     */
     constructor(options: IPesaOptions, environment: 'production' | 'sandbox');
     /**
      * Generate the Session Key
      *
      * Before you can integrate on the M-Pesa OpenAPI solution, you must exchange your Application Key for a Session Key. The API Key is created with the creation of a new application. The Session Key acts as an access token that authorises the rest of your REST API calls to the system. A valid Session Key is needed to transact on M-Pesa using OpenAPI.
      *
-     * @link https://openapiportal.m-pesa.com/api-documentation#GeneratingtheSessionKey
-     * @return mixed
+     * @see {@link https://openapiportal.m-pesa.com/api-documentation#GeneratingtheSessionKey}
+     * @returns {Promise}
      */
     get_session(): Promise<Res>;
     /**
@@ -104,31 +110,31 @@ export declare class Pesa {
      * 9.    The result is your encrypted API Key.
      *
      *
-     * @link https://openapiportal.m-pesa.com/api-documentation#GeneratingtheSessionKey
-     * @link https://nodejs.org/api/crypto.html#crypto_crypto_createpublickey_key
+     * @see {@link https://openapiportal.m-pesa.com/api-documentation#GeneratingtheSessionKey }
+     * @see {@link https://nodejs.org/api/crypto.html#crypto_crypto_createpublickey_key }
      *
-     * @param key
-     * @return string
+     * @param {string} key
+     * @return {string}
      */
     encrypt_key(key: string): string;
     /**
-     * The Query Transaction Status API call is used to query the status of the transaction that has been initiated.
-     *
-     * @api
-     * @return mixed
-
-     * @param data
+     * The Query Transaction Status
+     * @name query
+     * @function
+     * @description The Query Transaction Status API call is used to query the status of the transaction that has been initiated.
+     * @param {query} data
+     * @returns {Promise}
      */
     query(data: query): Promise<Res>;
     /**
-     * customer to business (C2B)
-     *
-     * The C2B API call is used as a standard customer-to-business transaction. Funds from the customer’s mobile money wallet will be deducted and be transferred to the mobile money wallet of the business. To authenticate and authorize this transaction, M-Pesa Payments Gateway will initiate a USSD Push message to the customer to gather and verify the mobile money PIN number. This number is not stored and is used only to authorize the transaction.
-     *
+     * Customer to business (C2B)
+     * @function c2b
+     * @description The C2B API call is used as a standard customer-to-business transaction. Funds from the customer’s mobile money wallet will be deducted and be transferred to the mobile money wallet of the business. To authenticate and authorize this transaction, M-Pesa Payments Gateway will initiate a USSD Push message to the customer to gather and verify the mobile money PIN number. This number is not stored and is used only to authorize the transaction.
      * @api
-     * @return mixed
+     * @param {c2b} data
+     *
+     * @returns {Promise} Promise
 
-     * @param data
      */
     c2b(data: c2b): Promise<Res>;
     /**
@@ -140,9 +146,9 @@ export declare class Pesa {
      *  -    Charity pay-out
      *
      * @api
-     * @return mixed
+     * @param {b2c} data
 
-     * @param data
+     * @returns {Promise} Promise
      */
     b2c(data: b2c): Promise<Res>;
     /**
@@ -154,9 +160,9 @@ export declare class Pesa {
      *  -  Ad-hoc payment
      *
      * @api
-     * @return mixed
-
      * @param data
+     *
+     * @returns {Promise} Promise
      */
     b2b(data: b2b): Promise<Res>;
     /**
@@ -165,9 +171,10 @@ export declare class Pesa {
      * The Reversal API is used to reverse a successful transaction. Using the Transaction ID of a previously successful transaction,  the OpenAPI will withdraw the funds from the recipient party’s mobile money wallet and revert the funds to the mobile money wallet of the initiating party of the original transaction.
      *
      * @api
-     * @return mixed
-
      * @param data
+     *
+     * @returns {Promise} Promise
+     *
      */
     reverse(data: reversal): Promise<Res>;
     /**
@@ -181,9 +188,11 @@ export declare class Pesa {
      * •    Pay a mandate
      * The customer is able to view and cancel the Direct Debit mandate from G2 menu accessible via USSD menu or the Smartphone Application.
      * @api
-     * @return mixed
-
      * @param data
+     *
+     *
+     *
+     * @returns {Promise} Promise
      */
     debit_create(data: ddc): Promise<Res>;
     /**
@@ -196,9 +205,10 @@ export declare class Pesa {
      * The customer is able to view and cancel the Direct Debit mandate from G2 menu accessible via USSD menu or the Smartphone Application.
      *
      * @api
-     * @return mixed
 
      * @param data
+
+     * @returns {Promise} Promise
      */
     debit_payment(data: ddp): Promise<Res>;
 }

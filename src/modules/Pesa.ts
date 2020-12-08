@@ -201,10 +201,9 @@ export class Pesa {
         });
     }
     /**
-     * @name Customer to business (C2B)
-     * @function c2b 
+     * Customer to business (C2B)
+     * @function c2b
      * @description The C2B API call is used as a standard customer-to-business transaction. Funds from the customer’s mobile money wallet will be deducted and be transferred to the mobile money wallet of the business. To authenticate and authorize this transaction, M-Pesa Payments Gateway will initiate a USSD Push message to the customer to gather and verify the mobile money PIN number. This number is not stored and is used only to authorize the transaction.
-     * @memberof Pesa
      * @api
      * @param {c2b} data
      *
@@ -247,7 +246,7 @@ export class Pesa {
         });
     }
     /**
-     * @name  Business to Customer (B2C)
+     * Business to Customer (B2C)
      *
      * The B2C API Call is used as a standard business-to-customer funds disbursement. Funds from the business account’s wallet will be deducted and paid to the mobile money wallet of the customer. Use cases for the B2C includes:
      *  -    Salary payments
