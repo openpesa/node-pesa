@@ -20,7 +20,7 @@ Take a look at the [API docs here](https://pesa-js.netlify.app/).
    [minimum requirements](https://pesa-js.netlify.app/docs/requirements.html), including having **Node >= 10.1**.
 1. **Install the SDK** – Using [NPM](#) is the recommended way to install the
    Pesa SDK for JS. The SDK is available via [NPM] under the
-   [`openpesa/pesa-js`](#) package. You can run the following in the base directory of your project to add the SDK as a dependency:
+   [`openpesa/pesa-js`](https://www.npmjs.com/package/@openpesa/pesa-js) package. You can run the following in the base directory of your project to add the SDK as a dependency:
     ```sh
     npm install openpesa/pesa-js
     ```
@@ -38,7 +38,7 @@ Take a look at the [API docs here](https://pesa-js.netlify.app/).
 ```js
 import { Pesa } from '@openpesa/pesa-js';
 
-// Popolate the credtials
+// Populate the credentials
 const api_key = 'your_api_key';
 const public_key = 'the_public_key';
 
@@ -74,9 +74,11 @@ If you have a feature request or you encounter a bug, please file an issue on [o
 
 ## Road Map 
 
-1. Validate data input using Regex before API call.
-2. If fields are not provided then generate random string for "input_ThirdPartyConversationID" and "input_TransactionReference"
-3. Allow optional input for not required fields in request.
+1. Validate data input using Regex before the API call.
+2. If fields are not provided then generate a random string for "input_ThirdPartyConversationID" and "input_TransactionReference"
+3. Allow optional input for not required fields in a request.
+4. Check and Throw an error when used outside of Node.js due to security reasons, Advice on use outside Node.js.
+5. Validate Secret Keys length and format.
 
 
 
