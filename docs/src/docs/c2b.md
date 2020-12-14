@@ -2,27 +2,24 @@
 
 ## How to transact from customer to business
 
-In this course, we will cover what you need to transact from customers to businesses using Nodejs.
+In this course, we will cover what you need to transact from customers to businesses using Node.js.
 
-First set up the application in the portal
+First, we set up the application in the portal.
 
-When building apps on the sandbox application, Using the sandbox API which allows us to test our application logic without incurring any costs.
+When building apps on the sandbox environment, Using the sandbox credentials allows us to test our application logic without incurring any costs.
 
-At the bottom left corner of the screen there’s a little phone icon, click it and enter your phone number. This will be the test number you’ll be using and is the number we will send the airtime to. Ensure that you’ve edited the phone number variable we wrote earlier to the phone number you’re using on the simulator.
-
-We will import the required libraries which have already been preinstalled.
+We will import the required libraries which have already been pre-installed.
 
 Here’s the code that does this:
 
 
 ```js
-const { Pesa } = require '@openpesa/pesa-js';
+const { Pesa } = require('@openpesa/pesa-js');
 ```
 
-The above code imports the MPesa SDK for us.
+The above code imports the Pesa SDK for us.
 
 Next, we set our app credentials.
-
 
 
 ```js
@@ -30,7 +27,7 @@ let apiKey     = "your_API_key";
 let publicKey  = "your_public_key";
 ```
 
-These are the credentials that we use to authenticate requests to the OpenAPI service.
+These are the credentials that we use to authenticate requests to the Mpesa OpenAPI service.
 
 Now we are going to initialize the Pesa SDK.
 
@@ -38,14 +35,13 @@ Now we are going to initialize the Pesa SDK.
 cosnt pesa = new Pesa({
     'api_key' : apiKey,
     'public_key' : publicKey,
-},'sandbox');
+}, 'sandbox');
 
 ```
 
 We have just required the Pesa module into our app and assigned it to the `pesa` variable. We initialize it with our `api_key` and `public_key` which will be used to make authenticated transactions. Easy right?
 
 Now let’s set up our transaction.
-
 
 ```js
 
@@ -62,7 +58,7 @@ let data = {
 
 ```
 
-In order to transact from customer to business, you need the following.
+To transact from customer to business, you need the following:
 
 - An Amount
 - A CustomerMSISDN
@@ -73,7 +69,7 @@ In order to transact from customer to business, you need the following.
 - Purchased Items Desc
 - ThirdParty Conversation ID
 
-Next up we have a function to execute the transaction right below the `// Execute transaction` line.
+Next, we have a function to execute the transaction right below the `// Execute transaction` line.
 
 
 ```js
