@@ -1,78 +1,8 @@
+import axios from 'axios';
 import * as constants from 'constants';
 import * as crypto from 'crypto';
-import axios from 'axios';
 import { IPesaOptions } from '../shared/interfaces/IPesaOptions.interface';
-
-interface Res {
-    output_ResponseCode: string;
-    output_ResponseDesc: string;
-    output_SessionID: string;
-}
-interface c2b {
-    input_Amount: number;
-    input_Country: 'TZN';
-    input_Currency: 'TZS';
-    input_CustomerMSISDN: number | string;
-    input_ServiceProviderCode: number | string;
-    input_ThirdPartyConversationID: string;
-    input_TransactionReference: string;
-    input_PurchasedItemsDesc: string;
-}
-interface reversal {
-    input_ReversalAmount: string;
-    input_TransactionID: string;
-    input_Country: 'TZN';
-    input_ServiceProviderCode: number | string;
-    input_ThirdPartyConversationID: string;
-}
-interface b2c {
-    input_Amount: number;
-    input_Country: 'TZN';
-    input_Currency: 'TZS';
-    input_CustomerMSISDN: number | string;
-    input_ServiceProviderCode: number | string;
-    input_ThirdPartyConversationID: string;
-    input_TransactionReference: string;
-    input_PurchasedItemsDesc: string;
-}
-interface b2b {
-    input_Amount: number;
-    input_Country: 'TZN';
-    input_Currency: 'TZS';
-    input_PrimaryPartyCode: string;
-    input_ReceiverPartyCode: string;
-    input_ThirdPartyConversationID: string;
-    input_TransactionReference: string;
-    input_PurchasedItemsDesc: string;
-}
-interface query {
-    input_QueryReference: string;
-    input_ServiceProviderCode: number | string;
-    input_ThirdPartyConversationID: string;
-    input_Country: 'TZN';
-}
-interface ddc {
-    input_AgreedTC: number;
-    input_Country: 'TZN';
-    input_CustomerMSISDN: number | string;
-    input_EndRangeOfDays: number;
-    input_ExpiryDate: number;
-    input_FirstPaymentDate: number;
-    input_Frequency: number;
-    input_ServiceProviderCode: number | string;
-    input_StartRangeOfDays: number;
-    input_ThirdPartyConversationID: string;
-    input_ThirdPartyReference: string;
-}
-interface ddp {
-    input_Amount: number;
-    input_Country: 'TNZ';
-    input_Currency: 'TZS';
-    input_CustomerMSISDN: number | string;
-    input_ServiceProviderCode: number | string;
-    input_ThirdPartyConversationID: string;
-    input_ThirdPartyReference: string;
-}
+import { b2b, b2c, c2b, ddc, ddp, query, Res, reversal } from '../shared/interfaces/pesa.interface';
 
 /**
  * Pesa
