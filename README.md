@@ -72,16 +72,16 @@ npm test
 
 If you have a feature request or you encounter a bug, please file an issue on [our issue tracker on GitHub](https://github.com/openpesa/js-pesa/issues).
 
-## Road Map 
+## Road Map
 
 1. Validate data input using Regex before the API call.
 2. If fields are not provided then generate a random string for "input_ThirdPartyConversationID" and "input_TransactionReference"
 3. Allow optional input for not required fields in a request.
 4. Check and Throw an error when used outside of Node.js due to security reasons, Advice on use outside Node.js.
 5. Validate Secret Keys length and format.
-
-
-
+6. Allow user use custom sessionID on any/each transaction. (Portal allow for seesion with several hours of validity)
+7. Add and improve documentation and examples(example will include expressjs app)
+8. 
 
 
 ### Security
