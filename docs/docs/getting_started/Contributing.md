@@ -10,15 +10,15 @@ The [Open Source Guides](https://opensource.guide/) website has a collection of 
 -   [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
 -   [Building Welcoming Communities](https://opensource.guide/building-community/)
 
-## [Code of Conduct](https://code.fb.com/codeofconduct)
+## [Code of Conduct](#)
 
-Facebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](https://code.fb.com/codeofconduct) so that you can understand what actions will and will not be tolerated.
+Openpesa Organisation has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](#) so that you can understand what actions will and will not be tolerated.
 
 ## Get involved
 
 There are many ways to contribute to Openpesa, and many of them do not involve writing any code. Here's a few ideas to get started:
 
--   Start using Openpesa 2! Go through the [Getting Started](installation.md) guides. Does everything work as expected? If not, we're always looking for improvements. Let us know by [opening an issue](#reporting-new-issues).
+-   Start using Openpesa 2! Go through the [Getting Started](/guide/installation) guides. Does everything work as expected? If not, we're always looking for improvements. Let us know by [opening an issue](#reporting-new-issues).
 -   Look through the [v2.0 issues](https://github.com/openpesa/pesa-js/labels/v2). If you find an issue you would like to fix, [open a pull request](#your-first-pull-request). Issues tagged as [_Good first issue_](https://github.com/openpesa/pesa-js/labels/Good%20first%20issue) are a good place to get started.
 -   Help us making the docs better. File an issue if you find anything that is confusing or can be improved.
 -   Take a look at the [features requested](https://github.com/openpesa/pesa-js/labels/enhancement) by others in the community and consider opening a pull request if you see something you want to work on.
@@ -52,7 +52,7 @@ You can also file issues as [feature requests or enhancements](https://github.co
 
 ### Reporting security bugs
 
-Facebook has a [bounty program](https://www.facebook.com/whitehat/) for the safe disclosure of security bugs. With that in mind, please do not file public issues; go through the process outlined on that page.
+Please do not file public issues; go through the process outlined on that page.
 
 ## Working on Openpesa code
 

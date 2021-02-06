@@ -16,14 +16,7 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        // {
-        //   to: 'docs/',
-        //   activeBasePath: 'docs',
-        //   label: 'Docs',
-        //   position: 'left',
-        // },
-        {to: 'api/', label: 'API', position: 'left'},
-        {herf: 'https://openpesa.github.io/blog/', label: 'Blog', position: 'left'},
+        {href: 'https://openpesa.github.io/blog/', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/openpesa/pesa-js/',
           label: 'GitHub',
@@ -39,12 +32,8 @@ module.exports = {
           items: [
             {
               label: 'Quick Guide',
-              to: 'docs/',
-            },
-            {
-              label: 'Advanced Docs',
-              to: 'docs/adnvaced/',
-            },
+              to: '/',
+            }
           ],
         },
         {
