@@ -1,7 +1,9 @@
 ---
 id: typescript
-title: typescript
+title: Typescript Support
 ---
 
 
-You can write JSX and use React components within your Markdown thanks to [MDX](https://mdxjs.com/).
+SDK have first class typescript support
+Now you can start writing TypeScript enabled app.
+

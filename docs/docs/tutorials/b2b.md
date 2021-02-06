@@ -1,6 +1,6 @@
 ---
 id: b2b
-title: b2b
+title: Bussiness to bussiness
 ---
 
 

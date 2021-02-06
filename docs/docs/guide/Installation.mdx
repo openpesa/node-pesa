@@ -1,0 +1,60 @@
+---
+id: installation
+title: Installation
+---
+
+
+Pesa SDK can be installed using NPM package manager.
+
+## System Requirements
+
+### **Minimum requirements**
+
+To run the SDK, your system will need to have **[Node](https://nodejs.org/en/) version >= 10.1**.
+
+
+### Installing to an Existing Project
+
+The MPesa Nodejs SDK can be an existing project using NPM or Tarn.
+
+In your project root:
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="yarn"
+  values={[
+    {label: 'YARN', value: 'yarn'},
+    {label: 'NPM', value: 'npm'}
+  ]}>
+  <TabItem value="yarn">
+
+  ```sh
+  yarn add openpesa/pesa-js
+  ```
+
+  </TabItem>
+  <TabItem value="npm">
+
+  ```sh
+  npm i openpesa/pesa-js
+  ```
+
+  </TabItem>
+
+</Tabs>
+
+
+
+### Upgrading
+
+Whenever there is a new release, then from the command line in your project root:
+
+
+```sh
+$ npm update
+```
+
+Read the upgrade instructions, and check designated files for affected changes.
+

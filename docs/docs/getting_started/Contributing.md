@@ -1,16 +1,172 @@
 ---
+
 id: contributing
-title: contributing
+title: Contributing
+
 ---
 
-This is a link to [another document.](doc3.md) This is a link to an [external page.](http://www.example.com/)
+The [Open Source Guides](https://opensource.guide/) website has a collection of resources for individuals, communities, and companies who want to learn how to run and contribute to an open source project. Contributors and people new to open source alike will find the following guides especially useful:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac euismod odio, eu consequat dui. Nullam molestie consectetur risus id imperdiet. Proin sodales ornare turpis, non mollis massa ultricies id. Nam at nibh scelerisque, feugiat ante non, dapibus tortor. Vivamus volutpat diam quis tellus elementum bibendum. Praesent semper gravida velit quis aliquam. Etiam in cursus neque. Nam lectus ligula, malesuada et mauris a, bibendum faucibus mi. Phasellus ut interdum felis. Phasellus in odio pulvinar, porttitor urna eget, fringilla lectus. Aliquam sollicitudin est eros. Mauris consectetur quam vitae mauris interdum hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+-   [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
+-   [Building Welcoming Communities](https://opensource.guide/building-community/)
 
-Duis et egestas libero, imperdiet faucibus ipsum. Sed posuere eget urna vel feugiat. Vivamus a arcu sagittis, fermentum urna dapibus, congue lectus. Fusce vulputate porttitor nisl, ac cursus elit volutpat vitae. Nullam vitae ipsum egestas, convallis quam non, porta nibh. Morbi gravida erat nec neque bibendum, eu pellentesque velit posuere. Fusce aliquam erat eu massa eleifend tristique.
+## [Code of Conduct](https://code.fb.com/codeofconduct)
 
-Sed consequat sollicitudin ipsum eget tempus. Integer a aliquet velit. In justo nibh, pellentesque non suscipit eget, gravida vel lacus. Donec odio ante, malesuada in massa quis, pharetra tristique ligula. Donec eros est, tristique eget finibus quis, semper non nisl. Vivamus et elit nec enim ornare placerat. Sed posuere odio a elit cursus sagittis.
+Facebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](https://code.fb.com/codeofconduct) so that you can understand what actions will and will not be tolerated.
 
-Phasellus feugiat purus eu tortor ultrices finibus. Ut libero nibh, lobortis et libero nec, dapibus posuere eros. Sed sagittis euismod justo at consectetur. Nulla finibus libero placerat, cursus sapien at, eleifend ligula. Vivamus elit nisl, hendrerit ac nibh eu, ultrices tempus dui. Nam tellus neque, commodo non rhoncus eu, gravida in risus. Nullam id iaculis tortor.
+## Get involved
 
-Nullam at odio in sem varius tempor sit amet vel lorem. Etiam eu hendrerit nisl. Fusce nibh mauris, vulputate sit amet ex vitae, congue rhoncus nisl. Sed eget tellus purus. Nullam tempus commodo erat ut tristique. Cras accumsan massa sit amet justo consequat eleifend. Integer scelerisque vitae tellus id consectetur.
+There are many ways to contribute to Openpesa, and many of them do not involve writing any code. Here's a few ideas to get started:
+
+-   Start using Openpesa 2! Go through the [Getting Started](installation.md) guides. Does everything work as expected? If not, we're always looking for improvements. Let us know by [opening an issue](#reporting-new-issues).
+-   Look through the [v2.0 issues](https://github.com/openpesa/pesa-js/labels/v2). If you find an issue you would like to fix, [open a pull request](#your-first-pull-request). Issues tagged as [_Good first issue_](https://github.com/openpesa/pesa-js/labels/Good%20first%20issue) are a good place to get started.
+-   Help us making the docs better. File an issue if you find anything that is confusing or can be improved.
+-   Take a look at the [features requested](https://github.com/openpesa/pesa-js/labels/enhancement) by others in the community and consider opening a pull request if you see something you want to work on.
+
+Contributions are very welcome. If you think you need help planning your contribution, please ping us on Twitter at [@openpesa](https://twitter.com/openpesa) and let us know you are looking for a bit of help.
+
+### Join our Telegram channel
+
+To participate in [Telegram](https://telegram.org/) Openpesa group, join the [openpesa](https://t.me/openpesa) group.
+
+## Our development process
+
+Openpesa uses [GitHub](https://github.com/openpesa/pesa-js) as its source of truth. The core team will be working directly there. All changes will be public from the beginning.
+
+When a change made on GitHub is approved, it will be checked by our continuous integration system, CircleCI.
+
+### Reporting new issues
+
+When [opening a new issue](https://github.com/openpesa/pesa-js/issues/new/choose), always make sure to fill out the issue template. **This step is very important!** Not doing so may result in your issue not managed in a timely fashion. Don't take this personally if this happens, and feel free to open a new issue once you've gathered all the information required by the template.
+
+-   **One issue, one bug:** Please report a single bug per issue.
+-   **Provide reproduction steps:** List all the steps necessary to reproduce the issue. The person reading your bug report should be able to follow these steps to reproduce your issue with minimal effort.
+
+### Reporting bugs
+
+We use [GitHub Issues](https://github.com/openpesa/pesa-js/issues) for our public bugs. If you would like to report a problem, take a look around and see if someone already opened an issue about it. If you a are certain this is a new, unreported bug, you can submit a [bug report](#reporting-new-issues).
+
+If you have questions about using Openpesa, contact the Openpesa Twitter account at [@openpesa](https://twitter.com/openpesa), and we will do our best to answer your questions.
+
+You can also file issues as [feature requests or enhancements](https://github.com/openpesa/pesa-js/labels/feature). If you see anything you'd like to be implemented, create an issue with [feature template](https://raw.githubusercontent.com/openpesa/pesa-js/master/.github/ISSUE_TEMPLATE/feature.md/)
+
+### Reporting security bugs
+
+Facebook has a [bounty program](https://www.facebook.com/whitehat/) for the safe disclosure of security bugs. With that in mind, please do not file public issues; go through the process outlined on that page.
+
+## Working on Openpesa code
+
+### Installation
+
+1. Ensure you have [Yarn](https://yarnpkg.com/) installed
+2. After cloning the repository, run `yarn install` in the root of the repository
+3. To start a local development server serving the Openpesa docs, go into the `website` directory and run `yarn start`
+
+### Semantic commit messages
+
+See how a minor change to your commit message style can make you a better programmer.
+
+Format: `<type>(<scope>): <subject>`
+
+`<scope>` is optional
+
+**Example**
+
+```
+feat: allow overriding of webpack config
+^--^  ^------------^
+|     |
+|     +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
+
+The various types of commits:
+
+-   `feat`: (new feature for the user, not a new feature for build script)
+-   `fix`: (bug fix for the user, not a fix to a build script)
+-   `docs`: (changes to the documentation)
+-   `style`: (formatting, missing semi colons, etc; no production code change)
+-   `refactor`: (refactoring production code, eg. renaming a variable)
+-   `test`: (adding missing tests, refactoring tests; no production code change)
+-   `chore`: (updating grunt tasks etc; no production code change)
+
+Use lower case not title case!
+
+### Code conventions
+
+#### Style guide
+
+[Prettier](https://prettier.io/) will catch most styling issues that may exist in your code. You can check the status of your code styling by simply running `npm run prettier`.
+
+However, there are still some styles that Prettier cannot pick up.
+
+#### General
+
+-   **Most important: Look around.** Match the style you see used in the rest of the project. This includes formatting, naming files, naming things in code, naming things in documentation.
+-   "Attractive"
+
+#### Documentation
+
+-   Do not wrap lines at 80 characters - configure your editor to soft-wrap when editing documentation.
+
+## Pull requests
+
+### Your first pull request
+
+So you have decided to contribute code back to upstream by opening a pull request. You've invested a good chunk of time, and we appreciate it. We will do our best to work with you and get the PR looked at.
+
+Working on your first Pull Request? You can learn how from this free video series:
+
+[**How to Contribute to an Open Source Project on GitHub**](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
+
+We have a list of [beginner friendly issues](https://github.com/openpesa/pesa-js/labels/good%20first%20issue) to help you get your feet wet in the Openpesa codebase and familiar with our contribution process. This is a great place to get started.
+
+### Proposing a change
+
+If you would like to request a new feature or enhancement but are not yet thinking about opening a pull request, you can also file an issue with [feature template](https://github.com/openpesa/pesa-js/issues/new?template=feature.md/).
+
+If you intend to change the public API (e.g., something in `openpesa.config.js`), or make any non-trivial changes to the implementation, we recommend filing an issue with [proposal template](https://github.com/openpesa/pesa-js/issues/new?template=proposal.md) and including `[Proposal]` in the title. This lets us reach an agreement on your proposal before you put significant effort into it. These types of issues should be rare.
+
+If you're only fixing a bug, it's fine to submit a pull request right away but we still recommend to file an issue detailing what you're fixing. This is helpful in case we don't accept that specific fix but want to keep track of the issue.
+
+### Sending a pull request
+
+Small pull requests are much easier to review and more likely to get merged. Make sure the PR does only one thing, otherwise please split it. It is recommended to follow this [commit message style](#semantic-commit-messages).
+
+Please make sure the following is done when submitting a pull request:
+
+1. Fork [the repository](https://github.com/openpesa/pesa-js) and create your branch from `master`.
+2. Add the copyright notice to the top of any code new files you've added.
+3. Describe your [test plan](#test-plan) in your pull request description.
+4. Make sure your code lints (`yarn prettier && yarn lint`).
+5. Make sure your Jest tests pass (`yarn test`).
+
+All pull requests should be opened against the `main` branch.
+
+#### Test plan
+
+A good test plan has the exact commands you ran and their output, provides screenshots or videos if the pull request changes UI.
+
+-   If you've changed APIs, update the documentation.
+
+#### Breaking changes
+
+When adding a new breaking change, follow this template in your pull request:
+
+```md
+### New breaking change here
+
+-   **Who does this affect**:
+-   **How to migrate**:
+-   **Why make this breaking change**:
+-   **Severity (number of people affected x effort)**:
+```
+
+### What happens next?
+
+The core Openpesa team will be monitoring for pull requests. Do help us by keeping pull requests consistent by following the guidelines above.
+
+## License
+
+By contributing to Openpesa, you agree that your contributions will be licensed under its MIT license.
