@@ -16,7 +16,6 @@ We will import the required libraries which have already been pre-installed.
 
 Here’s the code that does this:
 
-
 ```js
 const { Pesa } = require('@openpesa/pesa-js');
 ```
@@ -25,10 +24,9 @@ The above code imports the Pesa SDK for us.
 
 Next, we set our app credentials.
 
-
 ```js
-let apiKey     = "your_API_key";
-let publicKey  = "your_public_key";
+let apiKey = 'your_API_key';
+let publicKey = 'your_public_key';
 ```
 
 These are the credentials that we use to authenticate requests to the Mpesa OpenAPI service.
@@ -48,33 +46,30 @@ We have just required the Pesa module into our app and assigned it to the `pesa`
 Now let’s set up our transaction.
 
 ```js
-
 let data = {
-    'input_Amount' : 5000,
-    'input_CustomerMSISDN' : '000000000001',
-    'input_Country' : 'TZN',
-    'input_Currency' : 'TZS',
-    'input_ServiceProviderCode' : '000000',
-    'input_TransactionReference' : 'T12344Z',
-    'input_ThirdPartyConversationID' : '1e9b774d1da34af78412a498cbc28f5d',
-    'input_PurchasedItemsDesc' : 'Test Three Item'
+    input_Amount: 5000,
+    input_CustomerMSISDN: '000000000001',
+    input_Country: 'TZN',
+    input_Currency: 'TZS',
+    input_ServiceProviderCode: '000000',
+    input_TransactionReference: 'T12344Z',
+    input_ThirdPartyConversationID: '1e9b774d1da34af78412a498cbc28f5d',
+    input_PurchasedItemsDesc: 'Test Three Item',
 };
-
 ```
 
 To transact from customer to business, you need the following:
 
-- An Amount
-- A CustomerMSISDN
-- Country
-- Currency
-- Service Provider Code
-- Transaction Reference
-- Purchased Items Desc
-- ThirdParty Conversation ID
+-   An Amount
+-   A CustomerMSISDN
+-   Country
+-   Currency
+-   Service Provider Code
+-   Transaction Reference
+-   Purchased Items Desc
+-   ThirdParty Conversation ID
 
 Next, we have a function to execute the transaction right below the `// Execute transaction` line.
-
 
 ```js
 // Execute transaction
@@ -86,14 +81,13 @@ pesa.c2b(data)
     .catch((er) => {
         // print error
         console.log(er.data);
-    });    
+    });
 ```
-
 
 If the code works and the transaction is successful, it will print the response onto the console logs. If it’s not successful, it will print out an error instead.
 
-
 Sample response
+
 ```
 {
   output_ResponseCode: 'INS-0',
@@ -106,10 +100,7 @@ Sample response
 
 You’re all set!
 
-
-
-## Example Full 
-
+## Example Full
 
 ```js
 const { Pesa } = require('@openpesa/pesa-js');

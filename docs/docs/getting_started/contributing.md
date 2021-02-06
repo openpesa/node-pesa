@@ -1,8 +1,6 @@
 ---
-
 id: contributing
 title: Contributing
-
 ---
 
 The [Open Source Guides](https://opensource.guide/) website has a collection of resources for individuals, communities, and companies who want to learn how to run and contribute to an open source project. Contributors and people new to open source alike will find the following guides especially useful:

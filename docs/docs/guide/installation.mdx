@@ -52,9 +52,30 @@ import TabItem from '@theme/TabItem';
 Whenever there is a new release, then from the command line in your project root:
 
 
-```sh
-$ npm update
-```
 
+
+<Tabs
+  defaultValue="yarn"
+  values={[
+    {label: 'YARN', value: 'yarn'},
+    {label: 'NPM', value: 'npm'}
+  ]}>
+  <TabItem value="yarn">
+
+  ```sh
+  yarn upgrade
+  ```
+
+  </TabItem>
+  <TabItem value="npm">
+
+  ```sh
+
+  npm update
+  ```
+
+  </TabItem>
+
+</Tabs>
 Read the upgrade instructions, and check designated files for affected changes.
 
