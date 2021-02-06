@@ -16,12 +16,13 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
-        },
+        // {
+        //   to: 'docs/',
+        //   activeBasePath: 'docs',
+        //   label: 'Docs',
+        //   position: 'left',
+        // },
+        {to: 'api/', label: 'API', position: 'left'},
         {herf: 'https://openpesa.github.io/blog/', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/openpesa/pesa-js/',
