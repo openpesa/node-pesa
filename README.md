@@ -11,14 +11,14 @@ The **Pesa SDK for Node.js** makes it easy for developers to access [OpenAPI](ht
 
 ## Documentation
 
-Take a look at the [API docs here](https://pesa-js.netlify.app/).
+Take a look at the [API docs here](https://openpesa.github.io/pesa-js/).
 
 ## Getting Started
 
 1. **Sign up for OpenAPI Portal** – Before you begin, you need to sign up for an account and retrieve your credentials.
 
 1. **Minimum requirements** – To run the SDK, your system will need to meet the
-   [minimum requirements](https://pesa-js.netlify.app/docs/requirements.html), including having **Node >= 10.1**.
+   [minimum requirements](https://openpesa.github.io/pesa-js/guide/installation#system-requirements), including having **Node >= 10.1**.
 1. **Install the SDK** – Using [NPM](#) is the recommended way to install the
    Pesa SDK for JS. The SDK is available via [NPM] under the
    [`openpesa/pesa-js`](https://www.npmjs.com/package/@openpesa/pesa-js) package. You can run the following in the base directory of your project to add the SDK as a dependency:
@@ -26,11 +26,11 @@ Take a look at the [API docs here](https://pesa-js.netlify.app/).
     npm install openpesa/pesa-js
     ```
     Please see the
-    [Installation section of the User Guide](https://pesa-js.netlify.app/docs/installation.html) for more
+    [Installation section of the User Guide](https://openpesa.github.io/pesa-js/installation.html) for more
     detailed information about installing the SDK through Composer and other
     means.
 1. **Using the SDK** – The best way to become familiar with how to use the SDK
-   is to read the [User Guide](https://pesa-js.netlify.app/docs/guide.html).
+   is to read the [User Guide](https://openpesa.github.io/pesa-js/).
 
 ## Usage
 
@@ -71,7 +71,7 @@ npm test
 
 ## Opening Issues
 
-If you have a feature request or you encounter a bug, please file an issue on [our issue tracker on GitHub](https://github.com/openpesa/js-pesa/issues).
+If you have a feature request or you encounter a bug, please file an issue on [our issue tracker on GitHub](https://github.com/openpesa/pesa-js/issues).
 
 ## Road Map
 
