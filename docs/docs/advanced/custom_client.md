@@ -3,4 +3,8 @@ id: custom_client
 title: Custom Client
 ---
 
-## 🚧 WIP
+:::caution
+
+## Warning! 🚧 WIP!
+
+:::

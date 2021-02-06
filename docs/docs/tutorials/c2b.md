@@ -16,9 +16,33 @@ We will import the required libraries which have already been pre-installed.
 
 Here’s the code that does this:
 
-```js
-const { Pesa } = require('@openpesa/pesa-js');
-```
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+<Tabs
+  defaultValue="commonjs"
+  values={[
+    {label: 'CommonJS', value: 'commonjs'},
+    {label: 'ES Modules', value: 'es'}
+  ]}>
+  <TabItem value="commonjs">
+
+  ```sh
+  const { Pesa } = require('@openpesa/pesa-js');
+  ```
+
+  </TabItem>
+  <TabItem value="es">
+
+  ```sh
+  import { Pesa } from '@openpesa/pesa-js';  
+  ```
+
+  </TabItem>
+
+</Tabs>
+
 
 The above code imports the Pesa SDK for us.
 
@@ -60,14 +84,15 @@ let data = {
 
 To transact from customer to business, you need the following:
 
--   An Amount
--   A CustomerMSISDN
--   Country
--   Currency
--   Service Provider Code
--   Transaction Reference
--   Purchased Items Desc
--   ThirdParty Conversation ID
+| Attribute                | Desccription               | default |
+| ------------------------ | -------------------------- |---- |
+| Amount                   | An Amount                  ||
+| CustomerMSISDN           | A CustomerMSISDN           ||
+| Country                  | Country                    |TZN|
+| Currency                 | Currency                   |TZS|
+| ServiceProviderCode      | Service Provider Code      ||
+| TransactionReference     | Transaction Reference      |random number|
+| ThirdPartyConversationID | Purchased Items Desc       |random number|
 
 Next, we have a function to execute the transaction right below the `// Execute transaction` line.
 
@@ -88,7 +113,7 @@ If the code works and the transaction is successful, it will print the response 
 
 Sample response
 
-```
+```json
 {
   output_ResponseCode: 'INS-0',
   output_ResponseDesc: 'Request processed successfully',
@@ -108,13 +133,10 @@ const { Pesa } = require('@openpesa/pesa-js');
 let publicKey = '';
 let apiKey = '';
 
-let pesa = new Pesa(
-    {
-        api_key: apiKey,
-        public_key: publicKey,
-    },
-    'sandbox',
-);
+let pesa = new Pesa({
+    api_key: apiKey,
+    public_key: publicKey,
+},'sandbox');
 
 let data = {
     input_Amount: 5000,
