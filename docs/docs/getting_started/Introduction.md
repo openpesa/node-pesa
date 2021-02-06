@@ -1,7 +1,7 @@
 ---
-id: doc1
-title: Style Guide
-sidebar_label: Style Guide
+id: introduction
+title: Introduction
+sidebar_label: Introduction
 slug: /
 ---
 
@@ -90,7 +90,7 @@ Reference-style: ![alt text][logo]
 
 Images from any folder can be used by providing path to file. Path should be relative to markdown file.
 
-![img](../static/img/logo.svg)
+![img](../../static/img/logo.svg)
 
 ---
 
