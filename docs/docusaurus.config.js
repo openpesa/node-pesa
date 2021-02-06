@@ -2,7 +2,7 @@ module.exports = {
   title: 'Pesajs',
   tagline: 'Pesa SDK',
   url: 'https://openpesa.github.io/pesa-js/',
-  baseUrl: '/',
+  baseUrl: '/pesa-js/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
