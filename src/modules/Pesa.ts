@@ -39,6 +39,20 @@ export class Pesa {
     }
 
     /**
+     * getSessionId
+     */
+    public getSessionId(): string | null {
+        return this.options.sessionId ?? null;
+    }
+
+    /**
+     * setSessionId
+     */
+    public setSessionId(sessId: string): void {
+        this.options.sessionId = sessId;
+    }
+
+    /**
      * Generate the Session Key
      *
      * Before you can integrate on the M-Pesa OpenAPI solution, you must exchange your Application Key for a Session Key. The API Key is created with the creation of a new application. The Session Key acts as an access token that authorises the rest of your REST API calls to the system. A valid Session Key is needed to transact on M-Pesa using OpenAPI.
