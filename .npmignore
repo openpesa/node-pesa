@@ -1,0 +1,10 @@
+.nyc_output/
+coverage/
+node_modules/
+.idea/
+.vscode/
+.gitattributes
+.travis.yml
+docs/
+.editorconfig
+.prettierrc
