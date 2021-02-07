@@ -6,6 +6,8 @@ import { b2b, b2c, c2b, ddc, ddp, query, Res, reversal } from '../shared/interfa
 
 /**
  * Pesa
+ * @package openpesaa/pesa-js
+ * @class Pesa
  */
 export class Pesa {
     private BASE_DOMAIN = 'https://openapi.m-pesa.com/';
@@ -44,24 +46,17 @@ export class Pesa {
      * @see {@link https://openapiportal.m-pesa.com/api-documentation#GeneratingtheSessionKey}
      * @returns {Promise}
      */
-    public get_session(): Promise<Res> {
-        return new Promise((resolve, reject) => {
-            axios({
-                method: 'get',
-                url: this.baseURL + this.AUTH_URL,
-                headers: {
-                    Accept: 'application/json',
-                    Origin: '*',
-                    Authorization: 'Bearer ' + this.encrypt_key(this.options.api_key),
-                },
-            })
-                .then((response) => {
-                    resolve(response.data);
-                })
-                .catch((error) => {
-                    reject(error.response);
-                });
+    public async get_session(): Promise<Res> {
+        const response = await axios({
+            method: 'get',
+            url: this.baseURL + this.AUTH_URL,
+            headers: {
+                Accept: 'application/json',
+                Origin: '*',
+                Authorization: 'Bearer ' + this.encrypt_key(this.options.api_key),
+            },
         });
+        return response.data;
     }
     /**
      *
@@ -99,36 +94,28 @@ export class Pesa {
      * @param {query} data
      * @returns {Promise}
      */
-    public query(data: query): Promise<Res> {
-        return new Promise((resolve, reject) => {
-            this.get_session()
-                .then(({ output_SessionID }: Res) => {
-                    axios({
-                        method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.query,
-                        headers: {
-                            Accept: 'application/json',
-                            Origin: '*',
-                            Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-                        },
-                        data: {
-                            input_QueryReference: data.input_QueryReference,
-                            input_ServiceProviderCode: data.input_ServiceProviderCode,
-                            input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                            input_Country: data.input_Country,
-                        },
-                    })
-                        .then((response) => {
-                            resolve(response.data);
-                        })
-                        .catch((error) => {
-                            reject(error.response);
-                        });
-                })
-                .catch((error) => {
-                    reject(error);
-                });
+    public async query(data: query, sessionID: string | null): Promise<Res> {
+        let output_SessionID = '';
+        if (sessionID == null) {
+            const res = await this.get_session();
+            output_SessionID = res.output_SessionID;
+        }
+        const response = await axios({
+            method: 'post',
+            url: this.baseURL + this.TRANSACTION_ROUTES.query,
+            headers: {
+                Accept: 'application/json',
+                Origin: '*',
+                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+            },
+            data: {
+                input_QueryReference: data.input_QueryReference,
+                input_ServiceProviderCode: data.input_ServiceProviderCode,
+                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                input_Country: data.input_Country,
+            },
         });
+        return response.data;
     }
     /**
      * Customer to business (C2B)
@@ -140,40 +127,33 @@ export class Pesa {
      * @returns {Promise} Promise
 
      */
-    public c2b(data: c2b): Promise<Res> {
-        return new Promise((resolve, reject) => {
-            this.get_session()
-                .then(({ output_SessionID }: Res) => {
-                    axios({
-                        method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
-                        headers: {
-                            Accept: 'application/json',
-                            Origin: '*',
-                            Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-                        },
-                        data: {
-                            input_Amount: data.input_Amount,
-                            input_Country: data.input_Country,
-                            input_Currency: data.input_Currency,
-                            input_CustomerMSISDN: data.input_CustomerMSISDN,
-                            input_ServiceProviderCode: data.input_ServiceProviderCode,
-                            input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                            input_TransactionReference: data.input_TransactionReference,
-                            input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
-                        },
-                    })
-                        .then((response) => {
-                            resolve(response.data);
-                        })
-                        .catch((error) => {
-                            reject(error.response);
-                        });
-                })
-                .catch((error) => {
-                    reject(error);
-                });
+    public async c2b(data: c2b, sessionID: string | null): Promise<Res> {
+        let output_SessionID = '';
+        if (sessionID == null) {
+            const res = await this.get_session();
+            output_SessionID = res.output_SessionID;
+        }
+        const response = await axios({
+            method: 'post',
+            url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+            headers: {
+                Accept: 'application/json',
+                Origin: '*',
+                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+            },
+            data: {
+                input_Amount: data.input_Amount,
+                input_Country: data.input_Country,
+                input_Currency: data.input_Currency,
+                input_CustomerMSISDN: data.input_CustomerMSISDN,
+                input_ServiceProviderCode: data.input_ServiceProviderCode,
+                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                input_TransactionReference: data.input_TransactionReference,
+                input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
+            },
         });
+
+        return response.data;
     }
     /**
      * Business to Customer (B2C)
@@ -188,40 +168,32 @@ export class Pesa {
 
      * @returns {Promise} Promise
      */
-    public b2c(data: b2c): Promise<Res> {
-        return new Promise((resolve, reject) => {
-            this.get_session()
-                .then(({ output_SessionID }: Res) => {
-                    axios({
-                        method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
-                        headers: {
-                            Accept: 'application/json',
-                            Origin: '*',
-                            Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-                        },
-                        data: {
-                            input_Amount: data.input_Amount,
-                            input_Country: data.input_Country,
-                            input_Currency: data.input_Currency,
-                            input_CustomerMSISDN: data.input_CustomerMSISDN,
-                            input_ServiceProviderCode: data.input_ServiceProviderCode,
-                            input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                            input_TransactionReference: data.input_TransactionReference,
-                            input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
-                        },
-                    })
-                        .then((response) => {
-                            resolve(response.data);
-                        })
-                        .catch((error) => {
-                            reject(error.response);
-                        });
-                })
-                .catch((error) => {
-                    reject(error);
-                });
+    public async b2c(data: b2c, sessionID: string | null): Promise<Res> {
+        let output_SessionID = '';
+        if (sessionID == null) {
+            const res = await this.get_session();
+            output_SessionID = res.output_SessionID;
+        }
+        const response = await axios({
+            method: 'post',
+            url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+            headers: {
+                Accept: 'application/json',
+                Origin: '*',
+                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+            },
+            data: {
+                input_Amount: data.input_Amount,
+                input_Country: data.input_Country,
+                input_Currency: data.input_Currency,
+                input_CustomerMSISDN: data.input_CustomerMSISDN,
+                input_ServiceProviderCode: data.input_ServiceProviderCode,
+                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                input_TransactionReference: data.input_TransactionReference,
+                input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
+            },
         });
+        return response.data;
     }
     /**
      * Business to business (B2B)
@@ -236,40 +208,33 @@ export class Pesa {
      *
      * @returns {Promise} Promise
      */
-    public b2b(data: b2b): Promise<Res> {
-        return new Promise((resolve, reject) => {
-            this.get_session()
-                .then(({ output_SessionID }: Res) => {
-                    axios({
-                        method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
-                        headers: {
-                            Accept: 'application/json',
-                            Origin: '*',
-                            Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-                        },
-                        data: {
-                            input_Amount: data.input_Amount,
-                            input_Country: data.input_Country,
-                            input_Currency: data.input_Currency,
-                            input_PrimaryPartyCode: data.input_PrimaryPartyCode,
-                            input_ReceiverPartyCode: data.input_ReceiverPartyCode,
-                            input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                            input_TransactionReference: data.input_TransactionReference,
-                            input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
-                        },
-                    })
-                        .then((response) => {
-                            resolve(response.data);
-                        })
-                        .catch((error) => {
-                            reject(error.response);
-                        });
-                })
-                .catch((error) => {
-                    reject(error);
-                });
+    public async b2b(data: b2b, sessionID: string | null): Promise<Res> {
+        let output_SessionID = '';
+        if (sessionID == null) {
+            const res = await this.get_session();
+            output_SessionID = res.output_SessionID;
+        }
+
+        const response = await axios({
+            method: 'post',
+            url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+            headers: {
+                Accept: 'application/json',
+                Origin: '*',
+                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+            },
+            data: {
+                input_Amount: data.input_Amount,
+                input_Country: data.input_Country,
+                input_Currency: data.input_Currency,
+                input_PrimaryPartyCode: data.input_PrimaryPartyCode,
+                input_ReceiverPartyCode: data.input_ReceiverPartyCode,
+                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                input_TransactionReference: data.input_TransactionReference,
+                input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
+            },
         });
+        return response.data;
     }
     /**
      * Payment reversals
@@ -282,37 +247,29 @@ export class Pesa {
      * @returns {Promise} Promise
      *
      */
-    public reverse(data: reversal): Promise<Res> {
-        return new Promise((resolve, reject) => {
-            this.get_session()
-                .then(({ output_SessionID }: Res) => {
-                    axios({
-                        method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
-                        headers: {
-                            Accept: 'application/json',
-                            Origin: '*',
-                            Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-                        },
-                        data: {
-                            input_ReversalAmount: data.input_ReversalAmount,
-                            input_TransactionID: data.input_TransactionID,
-                            input_Country: data.input_Country,
-                            input_ServiceProviderCode: data.input_ServiceProviderCode,
-                            input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                        },
-                    })
-                        .then((response) => {
-                            resolve(response.data);
-                        })
-                        .catch((error) => {
-                            reject(error.response);
-                        });
-                })
-                .catch((error) => {
-                    reject(error);
-                });
+    public async reverse(data: reversal, sessionID: string | null): Promise<Res> {
+        let output_SessionID = '';
+        if (sessionID == null) {
+            const res = await this.get_session();
+            output_SessionID = res.output_SessionID;
+        }
+        const response = await axios({
+            method: 'post',
+            url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+            headers: {
+                Accept: 'application/json',
+                Origin: '*',
+                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+            },
+            data: {
+                input_ReversalAmount: data.input_ReversalAmount,
+                input_TransactionID: data.input_TransactionID,
+                input_Country: data.input_Country,
+                input_ServiceProviderCode: data.input_ServiceProviderCode,
+                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+            },
         });
+        return response.data;
     }
     /**
      *
@@ -331,43 +288,36 @@ export class Pesa {
      *
      * @returns {Promise} Promise
      */
-    public debit_create(data: ddc): Promise<Res> {
-        return new Promise((resolve, reject) => {
-            this.get_session()
-                .then(({ output_SessionID }: Res) => {
-                    axios({
-                        method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.ddc,
-                        headers: {
-                            Accept: 'application/json',
-                            Origin: '*',
-                            Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-                        },
-                        data: {
-                            input_AgreedTC: data.input_AgreedTC,
-                            input_Country: data.input_Country,
-                            input_CustomerMSISDN: data.input_CustomerMSISDN,
-                            input_EndRangeOfDays: data.input_EndRangeOfDays,
-                            input_ExpiryDate: data.input_ExpiryDate,
-                            input_FirstPaymentDate: data.input_FirstPaymentDate,
-                            input_Frequency: data.input_Frequency,
-                            input_ServiceProviderCode: data.input_ServiceProviderCode,
-                            input_StartRangeOfDays: data.input_StartRangeOfDays,
-                            input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                            input_ThirdPartyReference: data.input_ThirdPartyReference,
-                        },
-                    })
-                        .then((response) => {
-                            resolve(response.data);
-                        })
-                        .catch((error) => {
-                            reject(error.response);
-                        });
-                })
-                .catch((error) => {
-                    reject(error);
-                });
+    public async debit_create(data: ddc, sessionID: string | null): Promise<Res> {
+        let output_SessionID = '';
+        if (sessionID == null) {
+            const res = await this.get_session();
+            output_SessionID = res.output_SessionID;
+        }
+
+        const response = await axios({
+            method: 'post',
+            url: this.baseURL + this.TRANSACTION_ROUTES.ddc,
+            headers: {
+                Accept: 'application/json',
+                Origin: '*',
+                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+            },
+            data: {
+                input_AgreedTC: data.input_AgreedTC,
+                input_Country: data.input_Country,
+                input_CustomerMSISDN: data.input_CustomerMSISDN,
+                input_EndRangeOfDays: data.input_EndRangeOfDays,
+                input_ExpiryDate: data.input_ExpiryDate,
+                input_FirstPaymentDate: data.input_FirstPaymentDate,
+                input_Frequency: data.input_Frequency,
+                input_ServiceProviderCode: data.input_ServiceProviderCode,
+                input_StartRangeOfDays: data.input_StartRangeOfDays,
+                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                input_ThirdPartyReference: data.input_ThirdPartyReference,
+            },
         });
+        return response.data;
     }
     /**
      * Direct Debit Payment
@@ -384,38 +334,31 @@ export class Pesa {
 
      * @returns {Promise} Promise
      */
-    public debit_payment(data: ddp): Promise<Res> {
-        return new Promise((resolve, reject) => {
-            this.get_session()
-                .then(({ output_SessionID }: Res) => {
-                    axios({
-                        method: 'post',
-                        url: this.baseURL + this.TRANSACTION_ROUTES.ddp,
-                        headers: {
-                            Accept: 'application/json',
-                            Origin: '*',
-                            Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-                        },
-                        data: {
-                            input_Amount: data.input_Amount,
-                            input_Country: data.input_Country,
-                            input_Currency: data.input_Currency,
-                            input_CustomerMSISDN: data.input_CustomerMSISDN,
-                            input_ServiceProviderCode: data.input_ServiceProviderCode,
-                            input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                            input_ThirdPartyReference: data.input_ThirdPartyReference,
-                        },
-                    })
-                        .then((response) => {
-                            resolve(response.data);
-                        })
-                        .catch((error) => {
-                            reject(error.response);
-                        });
-                })
-                .catch((error) => {
-                    reject(error);
-                });
+    public async debit_payment(data: ddp, sessionID: string | null): Promise<Res> {
+        let output_SessionID = '';
+        if (sessionID == null) {
+            const res = await this.get_session();
+            output_SessionID = res.output_SessionID;
+        }
+
+        const response = await axios({
+            method: 'post',
+            url: this.baseURL + this.TRANSACTION_ROUTES.ddp,
+            headers: {
+                Accept: 'application/json',
+                Origin: '*',
+                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+            },
+            data: {
+                input_Amount: data.input_Amount,
+                input_Country: data.input_Country,
+                input_Currency: data.input_Currency,
+                input_CustomerMSISDN: data.input_CustomerMSISDN,
+                input_ServiceProviderCode: data.input_ServiceProviderCode,
+                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                input_ThirdPartyReference: data.input_ThirdPartyReference,
+            },
         });
+        return response.data;
     }
 }
