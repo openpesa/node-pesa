@@ -53,24 +53,32 @@ export class Pesa {
     }
 
     /**
-     * Generate the Session Key
+     * Generate a Session Key
      *
      * Before you can integrate on the M-Pesa OpenAPI solution, you must exchange your Application Key for a Session Key. The API Key is created with the creation of a new application. The Session Key acts as an access token that authorises the rest of your REST API calls to the system. A valid Session Key is needed to transact on M-Pesa using OpenAPI.
+     *
+     * Logic
+     * Will return saved sessionId otherise get a new sessionId
+     * Fetched sessionId will not be saved automatically
      *
      * @see {@link https://openapiportal.m-pesa.com/api-documentation#GeneratingtheSessionKey}
      * @returns {Promise}
      */
     public async get_session(): Promise<Res> {
-        const response = await axios({
-            method: 'get',
-            url: this.baseURL + this.AUTH_URL,
-            headers: {
-                Accept: 'application/json',
-                Origin: '*',
-                Authorization: 'Bearer ' + this.encrypt_key(this.options.api_key),
-            },
-        });
-        return response.data;
+        if (this.options.sessionId == null) {
+            const response = await axios({
+                method: 'get',
+                url: this.baseURL + this.AUTH_URL,
+                headers: {
+                    Accept: 'application/json',
+                    Origin: '*',
+                    Authorization: 'Bearer ' + this.encrypt_key(this.options.api_key),
+                },
+            });
+            return response.data;
+        } else {
+            return await { output_ResponseCode: '', output_ResponseDesc: '', output_SessionID: this.options.sessionId };
+        }
     }
     /**
      *
