@@ -36,6 +36,16 @@ export class Pesa {
             this.baseURL = this.BASE_DOMAIN + 'sandbox/';
         }
         this.options = options;
+
+        if (['node', 'io.js'].includes(process?.release?.name) == false) {
+            throw new Error(
+                `Unexpected process release name ${process?.release?.name}. This may indicate that the Mollie API client is integrated into a website or app. This is not recommended, please see https://openpesa.github.io/pesa-js/guide/usage-guide#. If this is a mistake, please let us know: https://github.com/openpesa/pesa-js/issues`,
+            );
+        }
+
+        if (!options.api_key && !options.public_key) {
+            throw new TypeError('Missing parameter "apiKey" or "publickey".');
+        }
     }
 
     /**
