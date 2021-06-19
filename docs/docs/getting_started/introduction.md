@@ -10,7 +10,7 @@ slug: /
 
 ## What is Pesa SDK
 
-Pesa SDK is a [Software Development Kit](https://en.wikipedia.org/wiki/Software_development_kit) - a toolkit - for people are looking to inrtgrate payments into apps built with Javascript.
+Pesa SDK is a [Software Development Kit](https://en.wikipedia.org/wiki/Software_development_kit) - a toolkit - for people looking to integrate payments into apps built with Javascript.
 
 ## Goal
 
