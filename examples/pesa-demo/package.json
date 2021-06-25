@@ -1,0 +1,12 @@
+{
+  "name": "pesa-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+      "start": "node index.js"
+  },
+  "dependencies": {
+    "@openpesa/pesa-js": "^0.0.3"
+  }
+}
