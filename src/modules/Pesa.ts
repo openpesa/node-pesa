@@ -87,7 +87,7 @@ export class Pesa {
             });
             return response.data;
         } else {
-            return await { output_ResponseCode: '', output_ResponseDesc: '', output_SessionID: this.options.sessionId };
+            return { output_ResponseCode: '', output_ResponseDesc: '', output_SessionID: this.options.sessionId };
         }
     }
     /**
