@@ -40,7 +40,10 @@ jobs:
       - name: Install library dependency
         run: npm install
 
+      - name: Build Library
+        run: npm run build
+
       - name: Publish Library to NPM
-        run: npm run publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
