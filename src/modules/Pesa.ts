@@ -75,7 +75,7 @@ export class Pesa {
      * @returns {Promise}
      */
     public async get_session(): Promise<Res> {
-        if (this.options.sessionId == null) {
+        if (!this.options.sessionId) {
             const response = await axios({
                 method: 'get',
                 url: this.baseURL + this.AUTH_URL,
@@ -126,9 +126,9 @@ export class Pesa {
      * @param {query} data
      * @returns {Promise}
      */
-    public async query(data: query, sessionID: string | null): Promise<Res> {
+    public async query(data: query, sessionID?: string | null): Promise<Res> {
         let output_SessionID = '';
-        if (sessionID == null) {
+        if (!sessionID) {
             const res = await this.get_session();
             output_SessionID = res.output_SessionID;
         }
@@ -159,9 +159,9 @@ export class Pesa {
      * @returns {Promise} Promise
 
      */
-    public async c2b(data: c2b, sessionID: string | null): Promise<Res> {
+    public async c2b(data: c2b, sessionID?: string | null): Promise<Res> {
         let output_SessionID = '';
-        if (sessionID == null) {
+        if (!sessionID) {
             const res = await this.get_session();
             output_SessionID = res.output_SessionID;
         }
@@ -200,9 +200,9 @@ export class Pesa {
 
      * @returns {Promise} Promise
      */
-    public async b2c(data: b2c, sessionID: string | null): Promise<Res> {
+    public async b2c(data: b2c, sessionID?: string | null): Promise<Res> {
         let output_SessionID = '';
-        if (sessionID == null) {
+        if (!sessionID) {
             const res = await this.get_session();
             output_SessionID = res.output_SessionID;
         }
@@ -240,9 +240,9 @@ export class Pesa {
      *
      * @returns {Promise} Promise
      */
-    public async b2b(data: b2b, sessionID: string | null): Promise<Res> {
+    public async b2b(data: b2b, sessionID?: string | null): Promise<Res> {
         let output_SessionID = '';
-        if (sessionID == null) {
+        if (!sessionID) {
             const res = await this.get_session();
             output_SessionID = res.output_SessionID;
         }
@@ -279,9 +279,9 @@ export class Pesa {
      * @returns {Promise} Promise
      *
      */
-    public async reverse(data: reversal, sessionID: string | null): Promise<Res> {
+    public async reverse(data: reversal, sessionID?: string | null): Promise<Res> {
         let output_SessionID = '';
-        if (sessionID == null) {
+        if (!sessionID) {
             const res = await this.get_session();
             output_SessionID = res.output_SessionID;
         }
@@ -320,9 +320,9 @@ export class Pesa {
      *
      * @returns {Promise} Promise
      */
-    public async debit_create(data: ddc, sessionID: string | null): Promise<Res> {
+    public async debit_create(data: ddc, sessionID?: string | null): Promise<Res> {
         let output_SessionID = '';
-        if (sessionID == null) {
+        if (!sessionID) {
             const res = await this.get_session();
             output_SessionID = res.output_SessionID;
         }
@@ -366,9 +366,9 @@ export class Pesa {
 
      * @returns {Promise} Promise
      */
-    public async debit_payment(data: ddp, sessionID: string | null): Promise<Res> {
+    public async debit_payment(data: ddp, sessionID?: string | null): Promise<Res> {
         let output_SessionID = '';
-        if (sessionID == null) {
+        if (!sessionID) {
             const res = await this.get_session();
             output_SessionID = res.output_SessionID;
         }

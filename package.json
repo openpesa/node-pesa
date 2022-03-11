@@ -2,7 +2,7 @@
     "name": "@openpesa/pesa-js",
     "description": "MPesa SDK for Nodejs",
     "license": "MIT",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "author": "Openpesa",
     "main": "lib/modules/index.js",
     "types": "lib/modules/index.d.ts",
@@ -17,7 +17,9 @@
         "format": "prettier --write \"src/**/*.ts\"",
         "prebuild": "npm run lint && npm run format",
         "build": "tsc",
-        "test": "jest --config jestconfig.json"
+        "postbuild":"rimraf lib/__mocks__",
+        "test": "jest --config jestconfig.json",
+        "release": "npm publish --access public "
     },
     "devDependencies": {
         "@types/jest": "^26.0.17",
