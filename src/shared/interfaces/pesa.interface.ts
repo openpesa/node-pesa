@@ -1,8 +1,16 @@
-/** Format for output Response payload*/
+/*
+ * Format for output Response payload*
+ * @Param output_ResponseCode
+ *
+ *
+ */
 export interface Res {
     output_ResponseCode: string;
     output_ResponseDesc: string;
     output_SessionID: string;
+    output_TransactionID?: string;
+    output_ConversationID?: string;
+    output_ThirdPartyConversationID?: string;
 }
 
 /** Customer to business (C2B) */
