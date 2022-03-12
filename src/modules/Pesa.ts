@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import * as constants from 'constants';
 import * as crypto from 'crypto';
 import { IPesaOptions } from '../shared/interfaces/IPesaOptions.interface';
@@ -167,32 +167,42 @@ export class Pesa {
 
      */
     public async c2b(data: c2b, sessionID?: string | null): Promise<Res> {
-        let output_SessionID = '';
-        if (!sessionID) {
-            const res = await this.get_session();
-            output_SessionID = res.output_SessionID;
-        }
-        const response = await axios({
-            method: 'post',
-            url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
-            headers: {
-                Accept: 'application/json',
-                Origin: '*',
-                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-            },
-            data: {
-                input_Amount: data.input_Amount,
-                input_Country: data.input_Country,
-                input_Currency: data.input_Currency,
-                input_CustomerMSISDN: data.input_CustomerMSISDN,
-                input_ServiceProviderCode: data.input_ServiceProviderCode,
-                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                input_TransactionReference: data.input_TransactionReference,
-                input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
-            },
-        });
+        try {
+            let output_SessionID = '';
+            if (!sessionID) {
+                const res = await this.get_session();
+                output_SessionID = res.output_SessionID;
+            }
+            const response = await axios({
+                method: 'post',
+                url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+                headers: {
+                    Accept: 'application/json',
+                    Origin: '*',
+                    Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+                },
+                data: {
+                    input_Amount: data.input_Amount,
+                    input_Country: data.input_Country,
+                    input_Currency: data.input_Currency,
+                    input_CustomerMSISDN: data.input_CustomerMSISDN,
+                    input_ServiceProviderCode: data.input_ServiceProviderCode,
+                    input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                    input_TransactionReference: data.input_TransactionReference,
+                    input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
+                },
+            });
 
-        return response.data;
+            return response.data;
+        } catch (error) {
+            const serverError = error as AxiosError<Res>;
+            if (axios.isAxiosError(error)) {
+                if (serverError && serverError.response) {
+                    return serverError.response.data;
+                }
+            }
+            throw new Error(serverError.message);
+        }
     }
     /**
      * Business to Customer (B2C)

@@ -11,6 +11,7 @@ export interface Res {
     output_TransactionID?: string;
     output_ConversationID?: string;
     output_ThirdPartyConversationID?: string;
+    errorMessage?: string;
 }
 
 /** Customer to business (C2B) */
