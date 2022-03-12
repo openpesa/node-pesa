@@ -134,27 +134,37 @@ export class Pesa {
      * @returns {Promise}
      */
     public async query(data: query, sessionID?: string | null): Promise<Res> {
-        let output_SessionID = '';
-        if (!sessionID) {
-            const res = await this.get_session();
-            output_SessionID = res.output_SessionID;
+        try {
+            let output_SessionID = '';
+            if (!sessionID) {
+                const res = await this.get_session();
+                output_SessionID = res.output_SessionID;
+            }
+            const response = await axios({
+                method: 'post',
+                url: this.baseURL + this.TRANSACTION_ROUTES.query,
+                headers: {
+                    Accept: 'application/json',
+                    Origin: '*',
+                    Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+                },
+                data: {
+                    input_QueryReference: data.input_QueryReference,
+                    input_ServiceProviderCode: data.input_ServiceProviderCode,
+                    input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                    input_Country: data.input_Country,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            const serverError = error as AxiosError<Res>;
+            if (axios.isAxiosError(error)) {
+                if (serverError?.response) {
+                    return { ...serverError.response.data, code: serverError.code };
+                }
+            }
+            throw new Error(serverError?.message || 'Internal server error');
         }
-        const response = await axios({
-            method: 'post',
-            url: this.baseURL + this.TRANSACTION_ROUTES.query,
-            headers: {
-                Accept: 'application/json',
-                Origin: '*',
-                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-            },
-            data: {
-                input_QueryReference: data.input_QueryReference,
-                input_ServiceProviderCode: data.input_ServiceProviderCode,
-                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                input_Country: data.input_Country,
-            },
-        });
-        return response.data;
     }
     /**
      * Customer to business (C2B)
@@ -197,11 +207,11 @@ export class Pesa {
         } catch (error) {
             const serverError = error as AxiosError<Res>;
             if (axios.isAxiosError(error)) {
-                if (serverError && serverError.response) {
-                    return serverError.response.data;
+                if (serverError?.response) {
+                    return { ...serverError.response.data, code: serverError.code };
                 }
             }
-            throw new Error(serverError.message);
+            throw new Error(serverError?.message || 'Internal server error');
         }
     }
     /**
@@ -218,31 +228,41 @@ export class Pesa {
      * @returns {Promise} Promise
      */
     public async b2c(data: b2c, sessionID?: string | null): Promise<Res> {
-        let output_SessionID = '';
-        if (!sessionID) {
-            const res = await this.get_session();
-            output_SessionID = res.output_SessionID;
+        try {
+            let output_SessionID = '';
+            if (!sessionID) {
+                const res = await this.get_session();
+                output_SessionID = res.output_SessionID;
+            }
+            const response = await axios({
+                method: 'post',
+                url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+                headers: {
+                    Accept: 'application/json',
+                    Origin: '*',
+                    Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+                },
+                data: {
+                    input_Amount: data.input_Amount,
+                    input_Country: data.input_Country,
+                    input_Currency: data.input_Currency,
+                    input_CustomerMSISDN: data.input_CustomerMSISDN,
+                    input_ServiceProviderCode: data.input_ServiceProviderCode,
+                    input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                    input_TransactionReference: data.input_TransactionReference,
+                    input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            const serverError = error as AxiosError<Res>;
+            if (axios.isAxiosError(error)) {
+                if (serverError?.response) {
+                    return { ...serverError.response.data, code: serverError.code };
+                }
+            }
+            throw new Error(serverError?.message || 'Internal server error');
         }
-        const response = await axios({
-            method: 'post',
-            url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
-            headers: {
-                Accept: 'application/json',
-                Origin: '*',
-                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-            },
-            data: {
-                input_Amount: data.input_Amount,
-                input_Country: data.input_Country,
-                input_Currency: data.input_Currency,
-                input_CustomerMSISDN: data.input_CustomerMSISDN,
-                input_ServiceProviderCode: data.input_ServiceProviderCode,
-                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                input_TransactionReference: data.input_TransactionReference,
-                input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
-            },
-        });
-        return response.data;
     }
     /**
      * Business to business (B2B)
@@ -258,32 +278,42 @@ export class Pesa {
      * @returns {Promise} Promise
      */
     public async b2b(data: b2b, sessionID?: string | null): Promise<Res> {
-        let output_SessionID = '';
-        if (!sessionID) {
-            const res = await this.get_session();
-            output_SessionID = res.output_SessionID;
-        }
+        try {
+            let output_SessionID = '';
+            if (!sessionID) {
+                const res = await this.get_session();
+                output_SessionID = res.output_SessionID;
+            }
 
-        const response = await axios({
-            method: 'post',
-            url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
-            headers: {
-                Accept: 'application/json',
-                Origin: '*',
-                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-            },
-            data: {
-                input_Amount: data.input_Amount,
-                input_Country: data.input_Country,
-                input_Currency: data.input_Currency,
-                input_PrimaryPartyCode: data.input_PrimaryPartyCode,
-                input_ReceiverPartyCode: data.input_ReceiverPartyCode,
-                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-                input_TransactionReference: data.input_TransactionReference,
-                input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
-            },
-        });
-        return response.data;
+            const response = await axios({
+                method: 'post',
+                url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+                headers: {
+                    Accept: 'application/json',
+                    Origin: '*',
+                    Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+                },
+                data: {
+                    input_Amount: data.input_Amount,
+                    input_Country: data.input_Country,
+                    input_Currency: data.input_Currency,
+                    input_PrimaryPartyCode: data.input_PrimaryPartyCode,
+                    input_ReceiverPartyCode: data.input_ReceiverPartyCode,
+                    input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                    input_TransactionReference: data.input_TransactionReference,
+                    input_PurchasedItemsDesc: data.input_PurchasedItemsDesc,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            const serverError = error as AxiosError<Res>;
+            if (axios.isAxiosError(error)) {
+                if (serverError?.response) {
+                    return { ...serverError.response.data, code: serverError.code };
+                }
+            }
+            throw new Error(serverError?.message || 'Internal server error');
+        }
     }
     /**
      * Payment reversals
@@ -297,28 +327,38 @@ export class Pesa {
      *
      */
     public async reverse(data: reversal, sessionID?: string | null): Promise<Res> {
-        let output_SessionID = '';
-        if (!sessionID) {
-            const res = await this.get_session();
-            output_SessionID = res.output_SessionID;
+        try {
+            let output_SessionID = '';
+            if (!sessionID) {
+                const res = await this.get_session();
+                output_SessionID = res.output_SessionID;
+            }
+            const response = await axios({
+                method: 'post',
+                url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
+                headers: {
+                    Accept: 'application/json',
+                    Origin: '*',
+                    Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
+                },
+                data: {
+                    input_ReversalAmount: data.input_ReversalAmount,
+                    input_TransactionID: data.input_TransactionID,
+                    input_Country: data.input_Country,
+                    input_ServiceProviderCode: data.input_ServiceProviderCode,
+                    input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            const serverError = error as AxiosError<Res>;
+            if (axios.isAxiosError(error)) {
+                if (serverError?.response) {
+                    return { ...serverError.response.data, code: serverError.code };
+                }
+            }
+            throw new Error(serverError?.message || 'Internal server error');
         }
-        const response = await axios({
-            method: 'post',
-            url: this.baseURL + this.TRANSACTION_ROUTES.c2b,
-            headers: {
-                Accept: 'application/json',
-                Origin: '*',
-                Authorization: 'Bearer ' + this.encrypt_key(output_SessionID),
-            },
-            data: {
-                input_ReversalAmount: data.input_ReversalAmount,
-                input_TransactionID: data.input_TransactionID,
-                input_Country: data.input_Country,
-                input_ServiceProviderCode: data.input_ServiceProviderCode,
-                input_ThirdPartyConversationID: data.input_ThirdPartyConversationID,
-            },
-        });
-        return response.data;
     }
     /**
      *
