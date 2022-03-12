@@ -160,7 +160,11 @@ export class Pesa {
             const serverError = error as AxiosError<Res>;
             if (axios.isAxiosError(error)) {
                 if (serverError?.response) {
-                    return { ...serverError.response.data, code: serverError.code };
+                    return {
+                        ...serverError.response.data,
+                        code: serverError.code,
+                        status: serverError.response.status,
+                    };
                 }
             }
             throw new Error(serverError?.message || 'Internal server error');
@@ -208,7 +212,11 @@ export class Pesa {
             const serverError = error as AxiosError<Res>;
             if (axios.isAxiosError(error)) {
                 if (serverError?.response) {
-                    return { ...serverError.response.data, code: serverError.code };
+                    return {
+                        ...serverError.response.data,
+                        code: serverError.code,
+                        status: serverError.response.status,
+                    };
                 }
             }
             throw new Error(serverError?.message || 'Internal server error');
@@ -258,7 +266,11 @@ export class Pesa {
             const serverError = error as AxiosError<Res>;
             if (axios.isAxiosError(error)) {
                 if (serverError?.response) {
-                    return { ...serverError.response.data, code: serverError.code };
+                    return {
+                        ...serverError.response.data,
+                        code: serverError.code,
+                        status: serverError.response.status,
+                    };
                 }
             }
             throw new Error(serverError?.message || 'Internal server error');
@@ -309,7 +321,11 @@ export class Pesa {
             const serverError = error as AxiosError<Res>;
             if (axios.isAxiosError(error)) {
                 if (serverError?.response) {
-                    return { ...serverError.response.data, code: serverError.code };
+                    return {
+                        ...serverError.response.data,
+                        code: serverError.code,
+                        status: serverError.response.status,
+                    };
                 }
             }
             throw new Error(serverError?.message || 'Internal server error');
@@ -354,7 +370,11 @@ export class Pesa {
             const serverError = error as AxiosError<Res>;
             if (axios.isAxiosError(error)) {
                 if (serverError?.response) {
-                    return { ...serverError.response.data, code: serverError.code };
+                    return {
+                        ...serverError.response.data,
+                        code: serverError.code,
+                        status: serverError.response.status,
+                    };
                 }
             }
             throw new Error(serverError?.message || 'Internal server error');

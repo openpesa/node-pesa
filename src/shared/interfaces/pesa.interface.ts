@@ -13,6 +13,7 @@ export interface Res {
     output_ThirdPartyConversationID?: string;
     errorMessage?: string;
     code?: string;
+    status?: number;
 }
 
 /** Customer to business (C2B) */
