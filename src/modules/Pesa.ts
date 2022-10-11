@@ -141,7 +141,7 @@ export class Pesa {
                 output_SessionID = res.output_SessionID;
             }
             const response = await axios({
-                method: 'post',
+                method: 'get',
                 url: this.baseURL + this.TRANSACTION_ROUTES.query,
                 headers: {
                     Accept: 'application/json',
