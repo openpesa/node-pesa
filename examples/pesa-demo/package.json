@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-      "start": "node index.js"
+    "start": "node index.js"
   },
   "dependencies": {
-    "@openpesa/pesa-js": "^0.0.3"
+    "@openpesa/pesa-js": "^0.0.3",
+    "dotenv": "^16.0.3"
   }
 }
