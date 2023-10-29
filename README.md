@@ -1,19 +1,35 @@
-<p align="center"><img src="img/mpesa.png" width="400px" alt="M-Pesa Logo"></p>
+<h1 align="center">Node pesa</h1>
 
-# Pesa SDK for Nodejs using M-Pesa Open API
+<p align="center">
+    <a href="https://www.npmjs.com/package/@openpesa/pesa-js">
+        <img src="https://img.shields.io/npm/v/@openpesa/pesa-js" alt="npm (scoped)">
+    </a>
+    <a href="https://npmjs.org/package/@openpesa/pesa-js">
+        <img src="https://nodei.co/npm/@openpesa/pesa-js.png?mini=true" alt="NPM">
+    </a>
+</p>
 
-![npm (scoped)](https://img.shields.io/npm/v/@openpesa/pesa-js)
-[![Build Status](https://travis-ci.org/openpesa/pesa-js.svg)](https://travis-ci.org/openpesa/pesa-js)
-![documentation](https://github.com/openpesa/pesa-js/workflows/documentation/badge.svg)
-[![NPM](https://nodei.co/npm/@openpesa/pesa-js.png?mini=true)](https://npmjs.org/package/@openpesa/pesa-js)
+<p align="center">
+ <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./img/banner/header-dark.png">
+      <img alt="node pesa" src="./img/banner/header-light.png">
+    </picture>
+ <p align="center"><p>Integration that simplifies access to <a href="https://openapiportal.m-pesa.com/login">M-Pesa's OpenAPI</a> for developers to build applications/ software by providing easy access to services like Customer to Business (C2B), Query, and more.</p>
+</p>
+</p>
 
-The **Pesa SDK for Node.js** makes it easy for developers to access [OpenAPI](https://openapiportal.m-pesa.com/) in their Javascript code, and build robust applications and software using services like Customer 2 Bussiness, Query, etc.
+<p align="center">
+    <a href="https://github.com/openpesa/node-pesa/issues/new/choose">Report Bug</a>
+    ·
+    <a href="https://github.com/openpesa/node-pesa/issues/new/choose">Request Feature</a>
+</p>
 
-## Documentation
+## 🚧 Documentation
 
 Take a look at the [API docs here](https://openpesa.github.io/pesa-js/).
 
-## Getting Started
+
+## 🚀 Getting Started
 
 1. **Sign up for OpenAPI Portal** – Before you begin, you need to sign up for an account and retrieve your credentials.
 
@@ -32,11 +48,10 @@ Take a look at the [API docs here](https://openpesa.github.io/pesa-js/).
 1. **Using the SDK** – The best way to become familiar with how to use the SDK
    is to read the [User Guide](https://openpesa.github.io/pesa-js/).
 
-## Usage
-
-### Quick Examples
+## 💼 Usage
 
 ```js
+
 import { Pesa } from '@openpesa/pesa-js';
 
 // Populate the credentials
@@ -61,19 +76,18 @@ pesa.c2b(data)
     .catch((e) => {
         console.log('err: ' + e);
     });
+
 ```
 
-### Testing
+## 🧪 Test
 
 ```bash
+
 npm test
+
 ```
 
-## Opening Issues
-
-If you have a feature request or you encounter a bug, please file an issue on [our issue tracker on GitHub](https://github.com/openpesa/pesa-js/issues).
-
-## Road Map
+## 🗺️ Road Map
 
 1. Validate data input using Regex before the API call.
 2. If fields are not provided then generate a random string for "input_ThirdPartyConversationID" and "input_TransactionReference"
@@ -82,18 +96,23 @@ If you have a feature request or you encounter a bug, please file an issue on [o
 5. Validate Secret Keys length and format.
 6. Allow user use custom sessionID on any/each transaction. (Portal allow for seesion with several hours of validity)
 7. Add and improve documentation and examples(example will include expressjs app)
-8. 
 
+## 📜 Changelog
 
-### Security
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-If you discover any security-related issues, please email [alphaolomi@gmail.com](mailto:alphaolomi@gmail.com) instead of using the issue tracker.
+## 🤝 Contributing
 
-## Credits
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
--   [Openpesa](https://github.com/openpesa)
+## 🔐 Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## 👥 Credits
+
 -   [All Contributors](../../contributors)
 
-## License
+## 📄 License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
